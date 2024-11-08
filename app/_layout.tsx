@@ -1,37 +1,67 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+import { Stack, Tabs } from 'expo-router'
+import { Feather } from '@expo/vector-icons'
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
+  const { mainTint, inactiveTint, inactiveIcon } = {
+    mainTint: 'tomato',
+    inactiveTint: 'blue',
+    inactiveIcon: 'black'
   }
 
+  const getIconColor = (color: string, isFocused: boolean) =>
+    isFocused ? color : inactiveIcon
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
-  );
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: mainTint,
+        tabBarInactiveTintColor: inactiveTint,
+        tabBarStyle: {
+          backgroundColor: 'lightblue'
+        }
+      }}
+    >
+      <Tabs.Screen name="index" options={{ tabBarLabel: 'Main' }} />
+      <Tabs.Screen
+        name="src/screens/CurrentWeather"
+        options={{
+          tabBarLabel: 'Current',
+          tabBarIcon: ({ focused, color }) => (
+            <Feather
+              name="droplet"
+              size={25}
+              color={getIconColor(color, focused)}
+            />
+          )
+        }}
+      />
+      <Tabs.Screen
+        name="src/screens/UpcomingWeather"
+        options={{
+          tabBarLabel: 'Upcoming',
+          tabBarIcon: ({ focused, color }) => (
+            <Feather
+              name="clock"
+              size={25}
+              color={getIconColor(color, focused)}
+            />
+          )
+        }}
+      />
+      <Tabs.Screen
+        name="src/screens/City"
+        options={{
+          tabBarLabel: 'City',
+          tabBarIcon: ({ focused, color }) => (
+            <Feather
+              name="home"
+              size={25}
+              color={getIconColor(color, focused)}
+            />
+          )
+        }}
+      />
+    </Tabs>
+  )
 }
