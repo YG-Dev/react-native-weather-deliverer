@@ -1,13 +1,14 @@
+import { WeatherData } from '@/types/weatherTypes'
 import {
   requestForegroundPermissionsAsync,
   getCurrentPositionAsync
 } from 'expo-location'
 import { useState, useEffect } from 'react'
 
-export const useGetWeather = () => {
+export const useGetWeather = (): [boolean, string | null, WeatherData | null] => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<null | string>(null)
-  const [weather, setWeather] = useState(null)
+  const [weather, setWeather] = useState<WeatherData | null>(null)
   const [lat, setLat] = useState<number>()
   const [lon, setLon] = useState<number>()
 
@@ -16,7 +17,7 @@ export const useGetWeather = () => {
       const res = await fetch(
         `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHER_API_KEY}`
       )
-      const data = res.json()
+      const data = await res.json()
       setWeather(data)
     } catch (err) {
       setError(

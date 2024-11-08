@@ -1,22 +1,24 @@
+import { WeatherContext } from '@/context/weatherContext'
 import { useGetWeather } from '@/hooks/useGetWeather'
 import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
 
 export default function Index() {
   const [loading, error, weather] = useGetWeather()
   const { container } = styles
-
-  if (weather) console.log('weather: ', weather)
-  if (loading) {
+  console.log('weather', weather)
+  if (weather?.list && !loading) {
     return (
-      <View style={container}>
-        <ActivityIndicator size="large" color="blue" />
-      </View>
+      <WeatherContext.Provider value={weather}>
+        <View style={container}>
+          <Text>Welcome</Text>
+        </View>
+      </WeatherContext.Provider>
     )
   }
 
   return (
     <View style={container}>
-      <Text>WElcome</Text>
+      <ActivityIndicator size="large" color="blue" />
     </View>
   )
 }

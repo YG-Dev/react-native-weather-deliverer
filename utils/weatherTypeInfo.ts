@@ -1,11 +1,13 @@
-type WeatherType = 'Thunderstorm' | 'Drizzle' | 'Rain' | 'Snow' | 'Clear' | 'Clouds' | 'Haze' | 'Mist'
-type WeatherData = {
+import { WeatherConditionType } from "@/types/weatherTypes";
+import { ColorValue } from "react-native";
+
+type WeatherInfoType = {
   icon: string;
   message: string;
-  backgroundColor: string;
+  backgroundColor: ColorValue;
 }
 
-export const weatherTypeInfo: { [key in WeatherType]: WeatherData } = {
+export const weatherTypeInfo: { [key in WeatherConditionType]: WeatherInfoType } = {
     Thunderstorm: {
         icon: 'zap',
         message: 'It could get noisy!',
