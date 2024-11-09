@@ -12,7 +12,7 @@ import { useWeatherContext } from '@/hooks/useWeatherContext'
 
 const City = () => {
   const { name, country, population, sunrise, sunset } =
-    useWeatherContext().city
+    useWeatherContext()?.city
 
   const {
     container,

@@ -2,17 +2,14 @@ import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import RowText from '../../components/RowText'
 import { weatherTypeInfo } from '@/utils/weatherTypeInfo'
-import { useContext } from 'react'
-import { WeatherContext } from '@/context/weatherContext'
-import { WeatherData } from '@/types/weatherTypes'
 import { useWeatherContext } from '@/hooks/useWeatherContext'
 
 export default function CurrentWeather() {
   const {
     main: { temp, feels_like, temp_max, temp_min },
     weather
-  } = useWeatherContext().list[0]
-  const weatherCondition = weather[0].main
+  } = useWeatherContext()?.list[0]
+  const weatherCondition = weather[0]?.main
 
   const {
     wrapper,
@@ -29,16 +26,16 @@ export default function CurrentWeather() {
     <SafeAreaView
       style={[
         wrapper,
-        { backgroundColor: weatherTypeInfo[weatherCondition].backgroundColor }
+        { backgroundColor: weatherTypeInfo[weatherCondition]?.backgroundColor }
       ]}
     >
       <View style={container}>
         <Feather
-          name={weatherTypeInfo[weatherCondition].icon}
+          name={weatherTypeInfo[weatherCondition]?.icon}
           size={100}
           color="black"
         />
-        <Text style={temperature}>{temp}</Text>
+        <Text style={temperature}>{`${temp}°`}</Text>
         <Text style={feels}>{`Feels like ${feels_like}°`}</Text>
         <RowText
           messageOne={`High: ${temp_max}° `}
@@ -49,8 +46,8 @@ export default function CurrentWeather() {
         />
       </View>
       <RowText
-        messageOne={weather[0].description}
-        messageTwo={weatherTypeInfo[weatherCondition].message}
+        messageOne={weather[0]?.description}
+        messageTwo={weatherTypeInfo[weatherCondition]?.message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
@@ -61,7 +58,6 @@ export default function CurrentWeather() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: 'pink',
     flex: 1
   },
   container: {
@@ -91,9 +87,9 @@ const styles = StyleSheet.create({
     marginBottom: 40
   },
   description: {
-    fontSize: 48
+    fontSize: 44
   },
   message: {
-    fontSize: 30
+    fontSize: 25
   }
 })

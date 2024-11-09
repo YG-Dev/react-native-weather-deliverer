@@ -10,7 +10,7 @@ import { useWeatherContext } from '@/hooks/useWeatherContext'
 import { ListItemData } from '@/types/weatherTypes'
 
 export default function UpcomingWeather() {
-  const upcomingList = useWeatherContext().list
+  const upcomingList = useWeatherContext()?.list
 
   const { container, image } = styles
 

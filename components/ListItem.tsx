@@ -15,7 +15,11 @@ const ListItem = ({ dt_txt, min, max, condition }: ItemProps) => {
   const { item, date, temp, dateTextWrapper } = styles
   return (
     <View style={item}>
-      <Feather name={weatherTypeInfo[condition].icon} size={50} color="white" />
+      <Feather
+        name={weatherTypeInfo[condition]?.icon}
+        size={50}
+        color="white"
+      />
       <View style={dateTextWrapper}>
         <Text style={date}>{moment(dt_txt).format('dddd')}</Text>
         <Text style={date}>{moment(dt_txt).format('h:mm a')}</Text>
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderWidth: 5,
-    backgroundColor: 'pink'
+    backgroundColor: 'indianred'
   },
   temp: {
     color: 'white',
