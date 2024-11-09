@@ -6,9 +6,14 @@ import {
   StatusBar,
   View
 } from 'react-native'
+import moment from 'moment'
 import IconText from '../../components/IconText'
+import { useWeatherContext } from '@/hooks/useWeatherContext'
 
 const City = () => {
+  const { name, country, population, sunrise, sunset } =
+    useWeatherContext().city
+
   const {
     container,
     image,
@@ -28,13 +33,13 @@ const City = () => {
         source={require('../../assets/images/city-bg.jpg')}
         style={image}
       >
-        <Text style={[cityText, cityName]}>London</Text>
-        <Text style={[cityText, countryName]}>UK</Text>
+        <Text style={[cityText, cityName]}>{name}</Text>
+        <Text style={[cityText, countryName]}>{country}</Text>
         <View style={[rowLayout, populationWrapper]}>
           <IconText
             iconName="user"
             iconColor="red"
-            bodyText="8000"
+            bodyText={`Population: ${population}`}
             bodyTextStyles={populationText}
           />
         </View>
@@ -42,13 +47,13 @@ const City = () => {
           <IconText
             iconName="sunrise"
             iconColor="white"
-            bodyText="10:46:58am"
+            bodyText={moment(sunrise).format('h:mm a')}
             bodyTextStyles={riseSetText}
           />
           <IconText
             iconName="sunset"
             iconColor="white"
-            bodyText="17:28:15pm"
+            bodyText={moment(sunset).format('h:mm a')}
             bodyTextStyles={riseSetText}
           />
         </View>

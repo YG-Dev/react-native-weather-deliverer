@@ -18,7 +18,7 @@ export type ListItemData = {
     }
     weather: {
         main: WeatherConditionType;
-        description?: string;
+        description: string;
     }[]
 }
 

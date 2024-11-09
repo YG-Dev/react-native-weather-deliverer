@@ -1,8 +1,10 @@
 import { WeatherConditionType } from "@/types/weatherTypes";
 import { ColorValue } from "react-native";
 
+type WeatherIconEnum = 'zap' | 'cloud-rain' | 'umbrella' | 'cloud-snow' | 'sun' | 'cloud' | 'wind' | 'align-justify'
+
 type WeatherInfoType = {
-  icon: string;
+  icon: WeatherIconEnum;
   message: string;
   backgroundColor: ColorValue;
 }

@@ -33,20 +33,24 @@ export default function CurrentWeather() {
       ]}
     >
       <View style={container}>
-        <Feather name="sun" size={100} color="black" />
-        <Text style={temperature}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Feather
+          name={weatherTypeInfo[weatherCondition].icon}
+          size={100}
+          color="black"
+        />
+        <Text style={temperature}>{temp}</Text>
+        <Text style={feels}>{`Feels like ${feels_like}°`}</Text>
         <RowText
-          messageOne="High: 8"
-          messageTwo="Low: 6"
+          messageOne={`High: ${temp_max}° `}
+          messageTwo={`Low: ${temp_min}°`}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
         />
       </View>
       <RowText
-        messageOne="It's sunny"
-        messageTwo={weatherTypeInfo['Thunderstorm'].message}
+        messageOne={weather[0].description}
+        messageTwo={weatherTypeInfo[weatherCondition].message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
