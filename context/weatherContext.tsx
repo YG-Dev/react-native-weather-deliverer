@@ -7,4 +7,4 @@ import {
   useState
 } from 'react'
 
-export const WeatherContext = createContext<WeatherData | undefined>(undefined)
+export const WeatherContext = createContext<WeatherData | null>(null)

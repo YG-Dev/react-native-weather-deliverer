@@ -6,7 +6,7 @@ import {
   StatusBar,
   ImageBackground
 } from 'react-native'
-import ListItem from '../../../components/ListItem'
+import ListItem from '../../components/ListItem'
 
 interface WeatherData {
   dt_txt: string
@@ -61,7 +61,7 @@ export default function UpcomingWeather() {
     <SafeAreaView style={container}>
       <Text>Upcoming weather</Text>
       <ImageBackground
-        source={require('../../../assets/images/upcoming-bg.jpg')}
+        source={require('../../assets/images/upcoming-bg.jpg')}
         style={image}
       >
         <FlatList

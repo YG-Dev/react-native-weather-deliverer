@@ -1,20 +1,18 @@
-import { WeatherContext } from '@/context/weatherContext'
-import { useGetWeather } from '@/hooks/useGetWeather'
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
+import { useWeatherContext } from '@/hooks/useWeatherContext'
+import { Href, useRouter } from 'expo-router'
+import { useEffect } from 'react'
+import { View, StyleSheet, ActivityIndicator } from 'react-native'
 
 export default function Index() {
-  const [loading, error, weather] = useGetWeather()
+  const router = useRouter()
+  const weatherContext = useWeatherContext()
+
   const { container } = styles
-  console.log('weather', weather)
-  if (weather?.list && !loading) {
-    return (
-      <WeatherContext.Provider value={weather}>
-        <View style={container}>
-          <Text>Welcome</Text>
-        </View>
-      </WeatherContext.Provider>
-    )
-  }
+
+  useEffect(() => {
+    // If data is loaded
+    if (weatherContext?.list) router.push('/CurrentWeather' as Href)
+  }, [weatherContext])
 
   return (
     <View style={container}>

@@ -6,7 +6,7 @@ import {
   StatusBar,
   View
 } from 'react-native'
-import IconText from '../../../components/IconText'
+import IconText from '../../components/IconText'
 
 const City = () => {
   const {
@@ -25,7 +25,7 @@ const City = () => {
   return (
     <SafeAreaView style={container}>
       <ImageBackground
-        source={require('../../../assets/images/city-bg.jpg')}
+        source={require('../../assets/images/city-bg.jpg')}
         style={image}
       >
         <Text style={[cityText, cityName]}>London</Text>
