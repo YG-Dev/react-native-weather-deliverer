@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
+import { SafeAreaView, Text, View, StyleSheet, StatusBar } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import RowText from '../../components/RowText'
 import { weatherTypeInfo } from '@/utils/weatherTypeInfo'
@@ -58,7 +58,8 @@ export default function CurrentWeather() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flex: 1
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0
   },
   container: {
     flex: 1,

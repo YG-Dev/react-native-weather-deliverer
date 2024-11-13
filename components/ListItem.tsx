@@ -3,6 +3,7 @@ import { View, StyleSheet, Text } from 'react-native'
 import { weatherTypeInfo } from '@/utils/weatherTypeInfo'
 import { WeatherConditionType } from '@/types/weatherTypes'
 import moment from 'moment'
+import { appColors } from '@/utils/colors'
 
 type ItemProps = {
   dt_txt: string
@@ -18,7 +19,7 @@ const ListItem = ({ dt_txt, min, max, condition }: ItemProps) => {
       <Feather
         name={weatherTypeInfo[condition]?.icon}
         size={50}
-        color="white"
+        color={secondary}
       />
       <View style={dateTextWrapper}>
         <Text style={date}>{moment(dt_txt).format('dddd')}</Text>
@@ -32,6 +33,8 @@ const ListItem = ({ dt_txt, min, max, condition }: ItemProps) => {
 
 export default ListItem
 
+const { secondary, textPrimary, black } = appColors
+
 const styles = StyleSheet.create({
   item: {
     padding: 20,
@@ -41,14 +44,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderWidth: 5,
-    backgroundColor: 'indianred'
+    borderColor: black,
+    backgroundColor: textPrimary
   },
   temp: {
-    color: 'white',
+    color: secondary,
     fontSize: 20
   },
   date: {
-    color: 'white',
+    color: secondary,
     fontSize: 15
   },
   dateTextWrapper: {

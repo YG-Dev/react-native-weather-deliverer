@@ -38,7 +38,7 @@ export const weatherTypeInfo: { [key in WeatherConditionType]: WeatherInfoType }
       Clouds: {
         icon: 'cloud',
         message: 'You could live in the clouds',
-        backgroundColor: '#363636'
+        backgroundColor: '#807d7d'
       },
       Haze: {
         icon: 'wind',

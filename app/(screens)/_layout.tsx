@@ -1,24 +1,19 @@
-import { Stack, Tabs } from 'expo-router'
+import { Tabs } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
+import { appColors } from '@/utils/colors'
 
 export default function ScreensLayout() {
-  const { mainTint, inactiveTint, inactiveIcon } = {
-    mainTint: 'tomato',
-    inactiveTint: 'blue',
-    inactiveIcon: 'black'
-  }
-
   const getIconColor = (color: string, isFocused: boolean) =>
-    isFocused ? color : inactiveIcon
+    isFocused ? color : black
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: mainTint,
-        tabBarInactiveTintColor: inactiveTint,
+        tabBarActiveTintColor: white,
+        tabBarInactiveTintColor: black,
         tabBarStyle: {
-          backgroundColor: 'lightblue'
+          backgroundColor: textPrimary
         }
       }}
     >
@@ -64,3 +59,5 @@ export default function ScreensLayout() {
     </Tabs>
   )
 }
+
+const { textPrimary, white, black } = appColors
