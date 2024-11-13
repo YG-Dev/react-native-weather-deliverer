@@ -1,6 +1,4 @@
-![app current weather screenshot](https://i.gyazo.com/2169f9ea68ec389f7d3ea1926b191398.png)
-![app upcoming weather screenshot](https://i.gyazo.com/03531f0264598b79f73f89e0a625345f.png)
-![app city screenshot](https://i.gyazo.com/fdcef8464edd9d538b0320eb3fde719b.png)
+|<img width="250px" src="https://i.gyazo.com/2169f9ea68ec389f7d3ea1926b191398.png" alt="app current weather screenshot"/>|<img width="250px" src="https://i.gyazo.com/03531f0264598b79f73f89e0a625345f.png" alt="app upcoming weather screenshot"/>|<img width="250px" src="https://i.gyazo.com/fdcef8464edd9d538b0320eb3fde719b.png" alt="app city screenshot"/>
 
 # Weather deliverer
 
